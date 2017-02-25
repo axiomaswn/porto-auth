@@ -42,27 +42,27 @@
 
               <form id="login-form" method="POST" class="ui form">
                 <div class="field">
-                  <input type="text" name="username" placeholder="Username">
+                  <input type="text" name="username" placeholder="Username" required>
                 </div>
                 <div class="field">
-                  <input type="password" name="password" placeholder="Password">
+                  <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <button class="ui blue button" value="Submit" type="submit">Login</button>
               </form>
             </div>
             <div class="ui bottom attached tab segment" data-tab="second">
-              <div class="ui form">
+              <form id="register-form" method="POST" class="ui form">
                 <div class="field">
-                  <input type="text" v-model="username"placeholder="Username">
+                  <input type="text" name="username"placeholder="Username" required>
                 </div>
                 <div class="field">
-                  <input type="password" v-model="password" placeholder="Password">
+                  <input type="password" name="password" placeholder="Password" required>
                 </div>
-                <div class="field">
+                <!-- <div class="field">
                   <input type="text" v-model="email" placeholder="Email">
-                </div>
+                </div> -->
                 <button class="ui teal button" type="submit">Register</button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
         dataType: 'json',
         success : function(data){
             if(data.notfound){
-              console.log(data.notfound);
+              alert(data.notfound);
             }
             if(data.initoken){
               console.log(data.initoken)
@@ -98,8 +98,28 @@
               window.location.href = 'http://127.0.0.1:8080/home.html'
             }
             if(data.message){
-              console.log(data.message);
+              alert(data.message);
             }
+        },
+        error : function(err){
+          console.log(err);
+        }
+      })
+    })
+
+
+    $('#register-form').submit(function(e){
+      e.preventDefault()
+      $.ajax({
+        url:`http://localhost:3000/register`,
+        type:'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        success : function(data){
+          console.log(data);
+          username = data.username
+          password = data.password
+          alert('data berhasil ditambahkan')
         },
         error : function(err){
           console.log(err);
