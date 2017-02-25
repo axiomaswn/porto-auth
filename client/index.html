@@ -2,20 +2,79 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href=https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.css>
+    <link rel="stylesheet" type="text/css" href=https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.8/components/modal.css>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.8/semantic.js"></script>
+    <script scr="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.8/components/modal.js"></script>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link href='//fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <title></title>
   </head>
   <body>
-    <div class="container">
-      <form id="login-form" method="POST">
-        username :<br>
-        <input type="text" name="username">
-        <br>
-        password :<br>
-        <input type="text" name="password">
-        <br><br>
-        <input type="submit" value="Submit">
-      </form>
+
+
+
+
+    <div class="ui container " id="root" style="margin-top:40px">
+
+      <div class="rwo ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+
+          <div class="ui container stack segment">
+            <div class="ui top attached tabular menu">
+              <a class="item active" data-tab="first">Login</a>
+              <a class="item" data-tab="second">Register</a>
+            </div>
+            <div class="ui bottom attached tab segment active" data-tab="first">
+              <!-- <div class="container">
+                <form id="login-form" method="POST">
+                  username :<br>
+                  <input type="text" name="username">
+                  <br>
+                  password :<br>
+                  <input type="text" name="password">
+                  <br><br>
+                  <input type="submit" value="Submit">
+                </form>
+              </div> -->
+
+              <form id="login-form" method="POST" class="ui form">
+                <div class="field">
+                  <input type="text" name="username" placeholder="Username">
+                </div>
+                <div class="field">
+                  <input type="password" name="password" placeholder="Password">
+                </div>
+                <button class="ui blue button" value="Submit" type="submit">Login</button>
+              </form>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="second">
+              <div class="ui form">
+                <div class="field">
+                  <input type="text" v-model="username"placeholder="Username">
+                </div>
+                <div class="field">
+                  <input type="password" v-model="password" placeholder="Password">
+                </div>
+                <div class="field">
+                  <input type="text" v-model="email" placeholder="Email">
+                </div>
+                <button class="ui teal button" type="submit">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column"></div>
+      </div>
+
     </div>
+  <script type="text/javascript">
+    $('.menu .item')
+    .tab()
+    ;
+  </script>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
   </script>
